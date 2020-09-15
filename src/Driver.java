@@ -1,62 +1,42 @@
-import java.util.Scanner;
+import java.util.Random;
 
 public class Driver 
 {
 	public static void main(String[] args)
 	{
-		Scanner input = new Scanner(System.in);
-		System.out.print("Please enter a number: ");
-		String numberAsAString = input.nextLine();
-		int numberAsAnInt = Integer.parseInt(numberAsAString);
-		System.out.println(Driver.decimalToBinary(numberAsAnInt));
-		System.out.println(Driver.decimalToOctal(numberAsAnInt));
-		System.out.println(Driver.decimalToDecimal(numberAsAnInt));
-		System.out.println(Driver.decimalToHex(2989));
+		Random r = new Random();
+		int[] ar = new int[100];
+		for(int i = 0; i < ar.length; i++)
+		{
+			/*
+			int temp = r.nextInt();
+			if(temp < 0)
+			{
+				temp = temp * -1;
+			}
+			temp = temp % 15;
+			temp++;
+			*/
+			/*
+			int temp;
+			do
+			{
+				temp = r.nextInt();
+			}
+			while(temp < 1 || temp > 15);
+			System.out.println(temp);
+			*/
+			int temp = r.nextInt(15)+1;
+			ar[i] = temp;
+		}
+		Driver.printIntArray(ar);
 	}
 	
-	public static String decimalToHex(int numberAsAnInt)
+	public static void printIntArray(int [] ar)
 	{
-		String answer = "";
-		String map = "0123456789ABCDEF";
-		while(numberAsAnInt != 0)
+		for(int i : ar)
 		{
-			int temp = (numberAsAnInt % 16);
-			answer = map.charAt(temp) + answer;
-			numberAsAnInt = numberAsAnInt / 16;
+			System.out.println(i);
 		}
-		return answer;
-	}
-	
-	public static String decimalToDecimal(int numberAsAnInt)
-	{
-		String answer = "";
-		while(numberAsAnInt != 0)
-		{
-			answer = (numberAsAnInt % 10) + answer;
-			numberAsAnInt = numberAsAnInt / 10;
-		}
-		return answer;
-	}
-	
-	public static String decimalToOctal(int numberAsAnInt)
-	{
-		String answer = "";
-		while(numberAsAnInt != 0)
-		{
-			answer = (numberAsAnInt % 8) + answer;
-			numberAsAnInt = numberAsAnInt / 8;
-		}
-		return answer;
-	}
-	
-	public static String decimalToBinary(int numberAsAnInt)
-	{
-		String answer = "";
-		while(numberAsAnInt != 0)
-		{
-			answer = (numberAsAnInt % 2) + answer;
-			numberAsAnInt = numberAsAnInt / 2;
-		}
-		return answer;
 	}
 }
